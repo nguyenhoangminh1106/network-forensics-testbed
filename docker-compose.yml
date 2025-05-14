@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  attacker:
+    image: kalilinux/kali-rolling
+    container_name: attacker
+    networks:
+      testnet:
+        ipv4_address: 172.18.0.2
+    volumes:
+      - ./logs:/logs
+      - ./scripts:/scripts
+    cap_add:
+      - NET_ADMIN
+    privileged: true
+    entrypoint: ["/bin/bash", "/scripts/attack.sh"]
+
+  target:
+    image: ubuntu:20.04
+    container_name: target
+    networks:
+      testnet:
+        ipv4_address: 172.18.0.3
+    volumes:
+      - ./logs:/logs
+      - ./scripts:/scripts
+    entrypoint: ["/bin/bash", "/scripts/monitor.sh"]
+
+  logger:
+    image: ubuntu:20.04
+    container_name: logger
+    networks:
+      testnet:
+        ipv4_address: 172.18.0.4
+    volumes:
+      - ./logs:/logs
+      - ./scripts:/scripts
+    entrypoint: ["/bin/bash", "/scripts/logger.sh"]
+
+networks:
+  testnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
