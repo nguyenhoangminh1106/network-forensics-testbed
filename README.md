@@ -106,7 +106,7 @@ The **Network Forensics Testbed** is designed to help students practice network 
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under me =))
 
 ---
 
@@ -117,5 +117,3 @@ For detailed setup and usage instructions, download the **Network Forensics Test
 - [Download Instruction PDF](Network_Forensics_Testbed_Instruction.pdf)
 
 ---
-
-Would you like me to add some **student exercises** to the **README.md** to make it more interactive and engaging for learners?
